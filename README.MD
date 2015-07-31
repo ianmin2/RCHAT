@@ -8,6 +8,6 @@ Run "npm install" to install the dependencies ("express" and "socket.io");
 
 Run "npm start" or "node simple.js" to start the application
 
-Open your browser to access the application on "http://localhost:1234"
+Open your browser to access the application on < http://localhost:1234 >  ( replace localhost if running on a remote server )
 
 The application by default runs on port 1234
