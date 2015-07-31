@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "A simple NodeJS Realtime Chat application",
+  "main": "simple.js",
+  "dependencies": {
+    "express": "^4.12.3",
+    "socket.io": "^1.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Ian Innocent Mbae <ianmin2@live.com>",
+  "license": "ISC"
+}

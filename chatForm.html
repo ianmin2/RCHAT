@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello There</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.js"></script>
+    <script>
+    var socket = io.connect("");
+    $(function(){
+        
+        socket.emit("getNotifications");
+        
+        $("#sendNote").on("click", function(){
+            if( $("#usr").val() != "" && $("#msg").val() != "" ){
+                socket.emit("addNotification",{ user: $("#usr").val(), message: $("#msg").val() });
+                $("#usr").val("");
+                $("#msg").val("");
+            }else{
+                $("usr").focus();
+            }
+        });
+        
+    });
+    
+    socket.on("update",function(data){
+        update(data);
+    });
+        
+    socket.on("notifications", function(data){
+        data.reverse();
+        $("#sendNote").html("");
+        var ia;
+        for( d in data ){            
+            ia += ( "<p><b>" + data[d].user + ": </b> " + data[d].message + "</p>" );
+            console.log(data[d]);
+        }
+        $("#notifs").html(ia)
+        
+    });
+    
+    
+     var update = function( d ){
+         if( d != undefined ){
+              $("#notifs").prepend( "<p><b>" + d.user + ": </b> " + d.message + "</p>" );
+         };
+     }       
+        
+    </script>
+</head>
+<body>
+    
+        <input type="text" id="usr" placeholder="username">
+        <textarea id="msg" placeholder="message"></textarea>
+        <input type="submit" value="Add Notification" id="sendNote">
+    
+    <br><br><br>
+    
+    <div id="notifs">
+    
+    </div>
+</body>
+</html>
