@@ -1,3 +1,5 @@
+# RCHAT
+
 This simple project requires nodejs in order to run
 
 Run npm init to install the dependencies ("express" and "socket.io");
